@@ -1,13 +1,13 @@
 .App {
   text-align: center;
-  background-color: #282c34;
+  background-color: #1e1e1e; /* Couleur de fond sombre */
   min-height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   font-size: calc(10px + 2vmin);
-  color: white;
+  color: #dcdcdc; /* Texte clair */
 }
 
 .App-header {
@@ -18,14 +18,14 @@
 .chat-container {
   display: flex;
   flex-direction: column;
-  height: 80vh;
+  height: 90vh;
   max-width: 90%;
   width: 400px;
   margin: auto;
-  border: 1px solid #000000;
   border-radius: 8px;
   overflow: hidden;
-  background-color: #000000;
+  background-color: #2b2b2b; /* Fond sombre pour la boîte de chat */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4); /* Ombre subtile */
 }
 
 .chat-messages {
@@ -35,6 +35,14 @@
   display: flex;
   flex-direction: column;
   gap: 10px;
+  position: relative;
+  transition: margin-bottom 0.2s ease;
+  scrollbar-width: none; /* Masque la scrollbar dans Firefox */
+  -ms-overflow-style: none;  /* Masque la scrollbar dans IE10+ */
+}
+
+.chat-messages::-webkit-scrollbar {
+  display: none; /* Masque la scrollbar dans Chrome, Safari et Edge */
 }
 
 .chat-message {
@@ -49,58 +57,96 @@
 }
 
 .chat-message.user {
-  background-color: #007bff;
+  background-color: #007bff; /* Bleu vif pour l'utilisateur */
   color: white;
   align-self: flex-end;
   text-align: left;
 }
 
 .chat-message.bot {
-  background-color: #272525;
+  background-color: #444; /* Fond gris foncé pour le bot */
+  color: #dcdcdc; /* Texte clair pour le bot */
   align-self: flex-start;
   text-align: left;
 }
 
 .chat-input {
+  height: auto;
+  min-height: 40px;
+  max-height: 100px;
   display: flex;
   padding: 10px;
-  background-color: #000000;
+  align-items: center;
+  overflow-y: hidden; /* Gère le contenu au-delà de la hauteur max */
+  transition: height 0.2s ease; /* Ajustement fluide */
 }
 
+/* Personnalisation de la barre de défilement */
 .chat-input-field {
   display: flex;
   flex: 1;
   padding: 10px;
-  border: 1px solid #ccc;
+  border: 1px solid #555; /* Bordure gris foncé */
   border-radius: 16px;
   resize: none;
-  word-wrap: break-word;
-  white-space: pre-wrap;
-  overflow-wrap: break-word;
   overflow-y: auto;
-  min-height: 100px; /* Hauteur minimale */
-  max-height: 400px; /* Hauteur maximale */
-  width: auto;
-  max-width: 400px; /* Largeur maximale */
+  white-space: pre-wrap;
+  max-height: 100px;
   box-sizing: border-box;
-  transition: width 0.2s ease; /* Transition fluide pour la largeur */
+  transition: none;
+  height: 40px;
+  outline: none;
+
+  font-family: 'Arial', sans-serif;
+  font-size: 14px;
+  color: #f5f5f5; /* Texte clair */
+  background-color: #333; /* Fond sombre */
 }
 
+/* Personnaliser la barre de défilement */
+.chat-input-field::-webkit-scrollbar {
+  width: 14px;
+  height: 14px;
+  cursor: default;
+}
+
+/* Taille de la "poignée" (thumb) de la barre de défilement */
+.chat-input-field::-webkit-scrollbar-thumb {
+  background-color: #555; /* Gris pour la poignée */
+  border-radius: 10px;
+  border: 3px solid rgba(80, 80, 80, 0); /* Bordure subtile */
+  background-clip: padding-box;
+  cursor: default;
+}
+
+/* Personnaliser la piste (track) de la barre de défilement */
+.chat-input-field::-webkit-scrollbar-track {
+  border-radius: 10px;
+  margin: 10px;
+  cursor: default;
+  
+}
 
 .chat-input button {
   margin-left: 10px;
-  padding: 10px 20px;
+  padding: 12px 18px;
   border: none;
-  background-color: #007bff;
+  background-color: #007bff; /* Bouton bleu vif */
   color: white;
-  border-radius: 100px;
+  border-radius: 50%;
   cursor: pointer;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .chat-input button:hover {
-  background-color: #0056b3;
+  background-color: #0056b3; /* Hover bleu plus foncé */
 }
 
 .material-icons {
   font-size: 24px;
 }
+
